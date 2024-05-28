@@ -18,6 +18,7 @@
     loop:
     - nodejs
     - mysql
+
   - name: create expense user
     ansible.builtin.user:
       name: expense
@@ -63,6 +64,11 @@
       target: /app/schema/backend.sql
       state: import 
       name: all
+
+  - name: daemon reload
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+
 
 
 
